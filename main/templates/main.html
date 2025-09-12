@@ -1,8 +1,50 @@
-<h1>Main Bal-Balan</h1>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Football Shop</h1>
 
 <h5>NPM: </h5>
 <p>{{ npm }}</p>
-<h5>Name: </h5>
-<p>{{ name }}<p>
-<h5>Class: </h5>
+
+<h5>Name:</h5>
+<p>{{ name }}</p>
+
+<h5>Class:</h5>
 <p>{{ class }}</p>
+
+<a href="{% url 'main:add_product' %}">
+  <button>+ Add Product</button>
+</a>
+
+<hr>
+
+{% if not product_list %}
+<p>Belum ada data produk pada football shop.</p>
+{% else %}
+
+{% for product in product_list %}
+<div>
+  <h2><a href="{% url 'main:show_product' product.id %}">{{ product.name }}</a></h2>
+
+  <p>
+    <b>{{ product.get_category_display }}</b>
+    {% if product.is_featured %} | <b>Featured</b>{% endif %}
+    | Views: {{ product.product_views }}
+  </p>
+
+  {% if product.thumbnail %}
+  <img src="{{ product.thumbnail }}" alt="thumbnail" width="150" height="100">
+  <br />
+  {% endif %}
+
+  <p><b>Price:</b> Rp{{ product.price }}</p>
+  <p>{{ product.description|truncatewords:25 }}...</p>
+
+  <p><a href="{% url 'main:show_product' product.id %}"><button>View Details</button></a></p>
+</div>
+
+<hr>
+{% endfor %}
+
+{% endif %}
+
+{% endblock content %}
