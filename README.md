@@ -1,3 +1,5 @@
+https://muhammad-razka41-mainbalbalan.pbp.cs.ui.ac.id/
+
 # TUGAS 1
 
 ### **1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
@@ -116,3 +118,13 @@ Jika tidak ada token, penyerang bisa memaksa browser pengguna yang sedang login 
 ### **6. Apakah ada feedback untuk asdos di tutorial 2 yang sudah kalian kerjakan?**
 
 Tutorial 2 sangat jelas dan mudah dipahami, asisten dosen sangat membantu.
+
+---
+
+### **7. Mengakses keempat URL di poin 2 menggunakan Postman, membuat screenshot dari hasil akses URL pada Postman, dan menambahkannya ke dalam README.md.**
+
+<img width="1790" height="960" alt="Screenshot 2025-09-14 140052" src="https://github.com/user-attachments/assets/a49bacf7-f77d-4b48-91de-dff554a2f389" />
+<img width="1791" height="962" alt="Screenshot 2025-09-14 140115" src="https://github.com/user-attachments/assets/6df751a9-8def-421e-9f85-c9058907533c" />
+<img width="1790" height="965" alt="Screenshot 2025-09-14 140234" src="https://github.com/user-attachments/assets/c1d0500d-d4cf-4861-9e35-6091be5eeb00" />
+<img width="1790" height="959" alt="Screenshot 2025-09-14 140304" src="https://github.com/user-attachments/assets/abcbbe42-4f5b-4d20-8f67-d97c7f5c5fdd" />
+
