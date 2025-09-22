@@ -1,6 +1,6 @@
 https://muhammad-razka41-mainbalbalan.pbp.cs.ui.ac.id/
 
-# TUGAS 1
+# TUGAS 2
 
 ### **1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).**
 
@@ -74,7 +74,7 @@ Tutorial 1 sangat jelas dan mudah dipahami, asisten dosen sangat membantu.
 ---
 ---
 
-# TUGAS 2
+# TUGAS 3
 
 ### **1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?**
 
@@ -128,3 +128,51 @@ Tutorial 2 sangat jelas dan mudah dipahami, asisten dosen sangat membantu.
 <img width="1790" height="965" alt="Screenshot 2025-09-14 140234" src="https://github.com/user-attachments/assets/c1d0500d-d4cf-4861-9e35-6091be5eeb00" />
 <img width="1790" height="959" alt="Screenshot 2025-09-14 140304" src="https://github.com/user-attachments/assets/abcbbe42-4f5b-4d20-8f67-d97c7f5c5fdd" />
 
+---
+---
+
+# TUGAS 4
+
+### **1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.**
+
+Django AuthenticationForm adalah sebuah form bawaan dari Django yang digunakan untuk menangani proses login pengguna. Form ini secara otomatis akan memvalidasi username dan password yang dimasukkan oleh pengguna.
+
+---
+
+### **2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?**
+
+Autentikasi adalah proses verifikasi identitas pengguna yang semisalnya ingin mengakses suatu aplikasi menggunakan username dan password yang sudah terdaftar. Django memiliki sistem autentikasi bawaan, yaitu django.contrib.auth yang menyediakan model User untuk mengelola data pengguna, serta form bawaan seperti UserCreationForm dan AuthenticationForm.
+
+Otorisasi adalah proses menentukan izin atau akses yang dimiliki pengguna setelah berhasil diautentikasi. Django memiliki mekanisme otorisasi dengan sistem permission dan groups untuuk mengatur akses apa saja yang dimiliki pengguna terhadap data atau fitur tertentu. Selain itu, Django juga menyediakan dekorator seperti @login_required untuk membatasi akses ke halaman tertentu hanya untuk pengguna yang sudah login.
+
+---
+
+### **3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?**
+
+Cookies menyimpan sedikit data langsung di browser pengguna. Kelebihannya, tidak membebani server. Namun, kekurangannya adalah kurang aman karena data disimpan langsung di perangkat pengguna serta memiliki kapasitas yang terbatas.
+
+Sementara itu, session menyimpan data di sisi server. Agar server bisa tahu data milik user yang mana, browser hanya menyimpan sebuah kode unik (biasanya dinamakan sessionid) di dalam cookie. Keunggulannya, lebih aman untuk menyimpan data sensitif dan dapat menampung informasi dalam jumlah lebih besar. Kekurangannya, setiap sesi aktif akan memakan memori pada server.
+
+---
+
+### **4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?**
+
+Secara umum, penggunaan cookies tidak bisa langsung dianggap aman. Keamanannya bergantung pada bagaimana pengembang mengatur dan menggunakannya. Karena cookies disimpan dalam bentuk teks biasa di browser pengguna, informasi di dalamnya rentan terhadap berbagai risiko jika tidak dilindungi dengan benar. Untuk menangani berbagai risiko tersebut, Django menyediakan mekanisme keamanan bawaan untuk cookies, antara lain:
+- SESSION_COOKIE_HTTPONLY = mencegah JavaScript mengakses cookie (melindungi dari XSS).
+- SESSION_COOKIE_SECURE = cookie hanya dikirim lewat HTTPS, bukan HTTP biasa.
+- SESSION_EXPIRE_AT_BROWSER_CLOSE = session akan habis begitu browser ditutup.
+- CSRF protection = Django otomatis menambahkan token CSRF untuk mencegah serangan Cross-Site Request Forgery.
+
+---
+
+### **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)**
+
+1. Membuat form register
+2. Membuat fungsi login
+3. Membuat fungsi logout
+4. Menambahkan ketiga fungsi diatas ke dalam `views.py`, menghubungkan urlnya, dan membuat template html nya
+5. Menambahkan field `User` pada model `Product` untuk menghubungkan satu produk dengan satu user
+6. Menyesuaikan fungsi `add_product` agar setiap produk baru yang dibuat otomatis terhubung dengan pengguna yang sedang login.
+7. Modifikasi fungsi show main supaya informasi "name" yg ditampilkan adalah nama pengguna yg sedang log in `(request.user.username)`
+8. Mengambil informasi last_login dari cookies `(response.set_cookie('last_login', str(datetime.datetime.now())))` dan menampilkan sesi terakhir login pada halaman utama
+9.  Push ke GitHub dan deploy ke PWS.
