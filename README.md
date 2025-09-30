@@ -176,3 +176,83 @@ Secara umum, penggunaan cookies tidak bisa langsung dianggap aman. Keamanannya b
 7. Modifikasi fungsi show main supaya informasi "name" yg ditampilkan adalah nama pengguna yg sedang log in `(request.user.username)`
 8. Mengambil informasi last_login dari cookies `(response.set_cookie('last_login', str(datetime.datetime.now())))` dan menampilkan sesi terakhir login pada halaman utama
 9.  Push ke GitHub dan deploy ke PWS.
+
+---
+---
+
+# TUGAS 5
+
+### **1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!**
+
+1. Inline Styles: Atribut style yang ditulis langsung pada elemen HTML. Ini adalah prioritas tertinggi.
+
+    - Contoh: `<p style="color: red;">Merah.</p>`
+
+2. ID Selectors: Selector yang menggunakan ID unik suatu elemen (#id).
+
+    - Contoh: `#header { background-color: blue; }`
+
+3. Class Selectors, Attribute Selectors, dan Pseudo-classes: Selector yang menggunakan `.class`, atribut seperti `[type="text"]`, dan pseudo-class seperti `:hover`.
+
+    - Contoh: `.menu-item { color: green; }`
+
+4. Type Selectors dan Pseudo-elements: Selector yang menargetkan nama tag HTML (p, div, h1) dan pseudo-elemen seperti `::before` atau `::after`.
+
+    - Contoh: `p { font-size: 16px; }`
+
+5. Universal Selector (*): Selector ini memiliki spesifisitas paling rendah.
+
+----
+
+### **2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!**
+
+Responsive design adalah pendekatan dalam desain web yang membuat tampilan situs web dapat beradaptasi dengan berbagai ukuran layar perangkat, mulai dari desktop, tablet, hingga ponsel. Ini penting karena:
+
+- Ada banyak jenis perangkat, satu UI saja belum tentu cocok di semua perangkat.
+- Memberikan pengalaman yang nyaman bagi pengguna di semua perangkat.
+- Google memprioritaskan situs yang mobile-friendly dalam hasil pencariannya. (SEO)
+- Mengelola satu situs web yang responsif lebih mudah daripada harus mengelola versi terpisah pisah.
+
+Sebagian besar situs generasi sekarang sudah menerapkan responsive design, seperti tokopedia, traveloka dll. Mungkin yang belum menerapkan responsive design itu situs situs generasi lama yang biasanya hanya dibangun khusus untuk desktop.
+
+----
+
+### **3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!**
+
+- Margin: Ruang di luar border, berfungsi untuk memberikan jarak antara satu elemen dengan elemen lain di sekitarnya.
+
+- Border: Garis di sekitar padding dan konten, bisa diatur ketebalan, gaya (misalnya, solid, dashed), dan warnanya.
+
+- Padding: Ruang di dalam border, antara border dan konten, berfungsi untuk memberikan ruang untuk konten di dalam elemen.
+
+Contoh:
+`.box {
+  margin: 20px;
+
+  border: 2px solid black;
+
+  padding: 15px;
+
+  margin-top: 10px;
+  border-left: 5px dotted green;
+  padding-bottom: 25px;
+}`
+
+---
+
+### **4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!**
+
+- Flexbox: Model layout satu dimensi, hanya mengatur elemen dalam satu baris atau satu kolom saja. Cocok digunakan untuk mengatur tata letak komponen komponen kecil dalam sebuah aplikasi, seperti menyelaraskan item item pada navbar atau card.
+
+- Grid Layout: Model layout dua dimensi, memungkinkan pengaturan elemen dalam baris dan kolom secara bersamaan. Cocok digunakan untuk mengatur tata letak keseluruhan web, seperti tata letak header, sidebar, dll.
+
+### **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!**
+
+1. Mengintegrasikan Tailwind CSS ke dalam `base.html` dan menambahkan direktori `static/css/global.css` untuk styling custom.
+2. Konfigurasi static di `settings.py` (STATIC_URL, STATIC_ROOT) dan tambahkan middleware `WhiteNoise`.
+3. Membuat fungsi `edit_product` dan `delete_product` di `views.py` kemudian mengatur URL path nya
+4. Membuat template html untuk `edit_product`
+5. Membuat template `card_product.html` untuk menampilkan setiap produk di halaman utama dan menambahkan tombol untuk edit dan delete product di dalam card nya.
+6. Membuat navigation bar yang responsif
+7. Mengatur styling di `global.css` dan menerapkan styling ke semua halaman utama (main.html, login.html, register.html, dll).
+8. Push ke GitHub dan deploy ke PWS.
