@@ -226,17 +226,17 @@ Sebagian besar situs generasi sekarang sudah menerapkan responsive design, seper
 - Padding: Ruang di dalam border, antara border dan konten, berfungsi untuk memberikan ruang untuk konten di dalam elemen.
 
 Contoh:
-`.box {
+```css
+.box {
   margin: 20px;
-
   border: 2px solid black;
-
   padding: 15px;
 
   margin-top: 10px;
   border-left: 5px dotted green;
   padding-bottom: 25px;
-}`
+}
+```
 
 ---
 
@@ -246,7 +246,9 @@ Contoh:
 
 - Grid Layout: Model layout dua dimensi, memungkinkan pengaturan elemen dalam baris dan kolom secara bersamaan. Cocok digunakan untuk mengatur tata letak keseluruhan web, seperti tata letak header, sidebar, dll.
 
-### **Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!**
+---
+
+### **5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!**
 
 1. Mengintegrasikan Tailwind CSS ke dalam `base.html` dan menambahkan direktori `static/css/global.css` untuk styling custom.
 2. Konfigurasi static di `settings.py` (STATIC_URL, STATIC_ROOT) dan tambahkan middleware `WhiteNoise`.
