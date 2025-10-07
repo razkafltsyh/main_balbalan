@@ -258,3 +258,47 @@ Contoh:
 6. Membuat navigation bar yang responsif
 7. Mengatur styling di `global.css` dan menerapkan styling ke semua halaman utama (main.html, login.html, register.html, dll).
 8. Push ke GitHub dan deploy ke PWS.
+
+---
+---
+
+# TUGAS 5
+
+### **1. Apa perbedaan antara synchronous request dan asynchronous request?**
+
+- Synchronous request: Browser mengirim permintaan dan berhenti total untuk menunggu jawaban, halaman tidak bisa diapa apain.
+- Asynchronous request: Browser mengirim permintaan sambil tetap berjalan, halaman tetap bisa digunakan seperti biasa sementara jawaban dari server diproses di latar belakang.
+
+---
+
+### **2. Bagaimana AJAX bekerja di Django (alur request–response)?**
+
+1. Browser menerima sebuah event dari pengguna (seperti klik tombol) yang memicu fungsi JavaScript.
+2. Selanjutnya, JavaScript akan mengirimkan fetch request ke URL spesifik.
+3. View (fungsi) yang sesuai akan memproses permintaan dan mengirim kembali hanya data (JSON), bukan halaman HTML utuh.
+4. Terakhir, Javascript akan menerima data JSON tersebut dan memperbarui bagian dari tampilan halaman secara langsung tanpa perlu reload halaman.
+
+---
+
+### **3. Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?**
+
+- Hanya data yang dibutuhkan yang akan dikirim, bukan seluruh halaman HTML, sehingga performa lebih baik.
+- Tidak perlu reload seluruh halaman, hanya data yang berubah saja, sehingga pengalaman pengguna lebih baik.
+- Server tidak perlu lagi merender template HTML berulang ulang hanya untuk request kecil.
+
+---
+
+### **4. Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?**
+
+- Menggunakan CSRF token di setiap request POST.
+- Menggunakan HTTPS agar data login (username & password) terenkripsi selama dikirim.
+- Validasi ulang semua input, misalnya pakai 'UserCreationForm' untuk register
+- Gunakan decorator seperti '@login_required' untuk memastikan hanya pengguna yang berhak yang dapat melakukan sesuatu.
+
+---
+
+### **5. Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?**
+
+- Respons instan dari web atas request mereka, ga perlu nunggu reload halaman
+- Bisa tetap berinteraksi tanpa terputus/terganggu sementara request nya diproses di latar belakang.
+- Terasa lebih cepat dan responsif
