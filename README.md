@@ -262,7 +262,7 @@ Contoh:
 ---
 ---
 
-# TUGAS 5
+# TUGAS 6
 
 ### **1. Apa perbedaan antara synchronous request dan asynchronous request?**
 
@@ -292,8 +292,8 @@ Contoh:
 
 - Menggunakan CSRF token di setiap request POST.
 - Menggunakan HTTPS agar data login (username & password) terenkripsi selama dikirim.
-- Validasi ulang semua input, misalnya pakai 'UserCreationForm' untuk register
-- Gunakan decorator seperti '@login_required' untuk memastikan hanya pengguna yang berhak yang dapat melakukan sesuatu.
+- Validasi ulang semua input, misalnya pakai `UserCreationForm` untuk register
+- Gunakan decorator seperti `@login_required` untuk memastikan hanya pengguna yang berhak yang dapat melakukan sesuatu.
 
 ---
 
@@ -302,3 +302,5 @@ Contoh:
 - Respons instan dari web atas request mereka, ga perlu nunggu reload halaman
 - Bisa tetap berinteraksi tanpa terputus/terganggu sementara request nya diproses di latar belakang.
 - Terasa lebih cepat dan responsif
+
+tes
