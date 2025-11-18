@@ -13,6 +13,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from main.forms import ProductForm
 from main.models import Product
 import json
+import requests
 
 @login_required(login_url='/login')
 def show_main(request):
@@ -254,3 +255,67 @@ def register_ajax(request):
             'errors': form.errors
         }, status=400)
     
+def proxy_image(request):
+    image_url = request.GET.get('url')
+    if not image_url:
+        return HttpResponse('No URL provided', status=400)
+    
+    try:
+        # Fetch image from external source
+        response = requests.get(image_url, timeout=10)
+        response.raise_for_status()
+        
+        # Return the image with proper content type
+        return HttpResponse(
+            response.content,
+            content_type=response.headers.get('Content-Type', 'image/jpeg')
+        )
+    except requests.RequestException as e:
+        return HttpResponse(f'Error fetching image: {str(e)}', status=500)
+    
+@csrf_exempt
+def create_product_flutter(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+
+            name = strip_tags(data.get("name", ""))
+            price = int(data.get("price", 0))
+            description = strip_tags(data.get("description", ""))
+            category = data.get("category", "jersey")
+            thumbnail = data.get("thumbnail", "")
+            
+            is_featured = data.get("is_featured", False)
+            if isinstance(is_featured, str):
+                is_featured = is_featured.lower() == 'true'
+
+            user = request.user
+            if not user.is_authenticated:
+                return JsonResponse({"status": "error", "message": "Authentication required"}, status=403)
+
+            new_product = Product(
+                user=user,
+                name=name,
+                price=price,
+                description=description,
+                category=category,
+                thumbnail=thumbnail,
+                is_featured=is_featured
+            )
+            
+            new_product.save()
+            
+            return JsonResponse({"status": "success"}, status=200)
+        
+        except ValueError:
+            return JsonResponse({"status": "error", "message": "Invalid price format"}, status=400)
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)}, status=500)
+
+    return JsonResponse({"status": "error", "message": "Invalid method"}, status=401)
+
+@login_required(login_url='login')
+def json_my_products(request):
+    """Menampilkan produk milik user yang sedang login"""
+    products = Product.objects.filter(user=request.user)
+    return JsonResponse(list(products.values()), safe=False)
